@@ -1,26 +1,37 @@
-version: '3.7'
+version: '2'
 services:
   web1:
     image: nginx
     ports:
-      - "6061:80"
+      - "80:80"
     container_name: "web1"
     restart: always
     networks:
-      - dev
+      - net
     volumes: 
-      - ./6061/web:/usr/share/nginx/html
-      - ./6061/conf.d:/etc/nginx/conf.d
+      - ./80/web:/usr/share/nginx/html
+      - ./80/conf.d:/etc/nginx/conf.d
   web2:
     image: nginx
     ports:
-      - "6062:80"
+      - "6061:80"
     container_name: "web2"
     restart: always
     networks:
-      - dev
+      - net
+    volumes: 
+      - ./6061/web:/usr/share/nginx/html
+      - ./6061/conf.d:/etc/nginx/conf.d
+  web3:
+    image: nginx
+    ports:
+      - "6062:80"
+    container_name: "web3"
+    restart: always
+    networks:
+      - net
     volumes: 
       - ./6062:/usr/share/nginx/html
 networks:
-  dev:
+  net:
     driver: bridge
