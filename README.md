@@ -17,9 +17,9 @@ nginx-compose  使用docker技术快速开启多个nginx服务器
 ```
 目前已创建三个示例，可以下载后直接放置自己的代码。
 
-6062为最基础用法，只映射了web目录
+6061为最基础用法，只映射了web目录
 
-6061中映射了web目录和nginx的conf.d目录，内部放置了nginx官方的default.conf
+6062中映射了web目录和nginx的conf.d目录，内部放置了nginx官方的default.conf
 
-80中映射了web目录和nginx的conf.d目录，内部放置了加入缓存控制conf文件
+6063中映射了web目录和nginx的conf.d目录，内部放置了加入缓存控制conf文件
 ```

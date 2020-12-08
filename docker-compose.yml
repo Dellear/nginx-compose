@@ -3,35 +3,35 @@ services:
   web1:
     image: nginx
     ports:
-      - "80:80"
+      - "6061:80"
     container_name: "web1"
     restart: always
     networks:
       - net
     volumes: 
-      - ./80/web:/usr/share/nginx/html
-      - ./80/conf.d:/etc/nginx/conf.d
+      - ./6061:/usr/share/nginx/html
   web2:
     image: nginx
     ports:
-      - "6061:80"
+      - "6062:80"
     container_name: "web2"
     restart: always
     networks:
       - net
     volumes: 
-      - ./6061/web:/usr/share/nginx/html
-      - ./6061/conf.d:/etc/nginx/conf.d
+      - ./6062/web:/usr/share/nginx/html
+      - ./6062/conf.d:/etc/nginx/conf.d
   web3:
     image: nginx
     ports:
-      - "6062:80"
+      - "6063:80"
     container_name: "web3"
     restart: always
     networks:
       - net
     volumes: 
-      - ./6062:/usr/share/nginx/html
+      - ./6063/web:/usr/share/nginx/html
+      - ./6063/conf.d:/etc/nginx/conf.d
 networks:
   net:
     driver: bridge
