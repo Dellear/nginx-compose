@@ -23,3 +23,11 @@ nginx-compose  使用docker技术快速开启多个nginx服务器
 
 6063中映射了web目录和nginx的conf.d目录，内部放置了加入缓存控制conf文件
 ```
+
+💡💡💡 目前日志记录时间是utc时间，可以添加如下配置改成北京时间
+```
+command: bash -c "ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+      && echo Asia/Shanghai > /etc/timezone
+      && nginx -t
+      && nginx -g 'daemon off;'"
+```
