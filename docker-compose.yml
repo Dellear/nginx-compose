@@ -12,6 +12,7 @@ services:
       - net
     volumes: 
       - ./web:/usr/share/nginx/html
+      - ./conf.d:/etc/nginx/conf.d
     command: bash -c "ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
       && echo Asia/Shanghai > /etc/timezone
       && nginx -t
