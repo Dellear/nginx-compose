@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 services:
   web:
     image: nginx
@@ -8,6 +8,8 @@ services:
       - "6063:6063"
     container_name: "web"
     restart: always
+    mem_limit: 256m
+    cpus: 2
     networks:
       - net
     volumes: 
