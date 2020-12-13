@@ -1,37 +1,21 @@
 version: '2'
 services:
-  web1:
+  web:
     image: nginx
     ports:
-      - "6061:80"
-    container_name: "web1"
+      - "6061:6061"
+      - "6062:6062"
+      - "6063:6063"
+    container_name: "web"
     restart: always
     networks:
       - net
     volumes: 
-      - ./6061:/usr/share/nginx/html
-  web2:
-    image: nginx
-    ports:
-      - "6062:80"
-    container_name: "web2"
-    restart: always
-    networks:
-      - net
-    volumes: 
-      - ./6062/web:/usr/share/nginx/html
-      - ./6062/conf.d:/etc/nginx/conf.d
-  web3:
-    image: nginx
-    ports:
-      - "6063:80"
-    container_name: "web3"
-    restart: always
-    networks:
-      - net
-    volumes: 
-      - ./6063/web:/usr/share/nginx/html
-      - ./6063/conf.d:/etc/nginx/conf.d
+      - ./web:/usr/share/nginx/html
+    command: bash -c "ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+      && echo Asia/Shanghai > /etc/timezone
+      && nginx -t
+      && nginx -g 'daemon off;'"
 networks:
   net:
     driver: bridge
