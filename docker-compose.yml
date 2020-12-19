@@ -10,15 +10,13 @@ services:
     restart: always
     mem_limit: 256m
     cpus: 2
+    environment:
+      TZ : "Asia/Shanghai"
     networks:
       - net
     volumes: 
       - ./web:/usr/share/nginx/html
       - ./conf.d:/etc/nginx/conf.d
-    command: bash -c "ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
-      && echo Asia/Shanghai > /etc/timezone
-      && nginx -t
-      && nginx -g 'daemon off;'"
 networks:
   net:
     driver: bridge
