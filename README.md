@@ -21,16 +21,14 @@ nginx-compose  使用docker技术快速开启多个nginx服务器
 
 6062中映射了web目录和nginx的conf.d目录，内部放置了nginx官方的default.conf
 
-6063中映射了web目录和nginx的conf.d目录，内部放置了加入缓存控制conf文件
+6063中映射了web目录和nginx的conf.d目录，内部放置了加入缓存控制和gzip的conf文件
 ```
 
 💡💡💡 这种方式会开启多个docker实例，想一个实例开三个web服务器吗？查看本项目one-nginx分支看看吧。
 
 💡💡💡 目前日志记录时间是utc时间，可以添加如下配置改成北京时间
 ```
-command: bash -c "ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
-      && echo Asia/Shanghai > /etc/timezone
-      && nginx -t
-      && nginx -g 'daemon off;'"
+environment:
+  TZ : "Asia/Shanghai"
 ```
 
