@@ -7,16 +7,12 @@ services:
       - "6062:6062"
       - "6063:6063"
     container_name: "web"
+    network_mode: bridge
     restart: always
-    mem_limit: 256m
+    mem_limit: 512m
     cpus: 2
     environment:
       TZ : "Asia/Shanghai"
-    networks:
-      - net
     volumes: 
       - ./web:/usr/share/nginx/html
       - ./conf.d:/etc/nginx/conf.d
-networks:
-  net:
-    driver: bridge
